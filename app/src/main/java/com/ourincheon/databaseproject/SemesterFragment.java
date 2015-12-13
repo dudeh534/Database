@@ -27,8 +27,13 @@ public class SemesterFragment extends android.support.v4.app.Fragment {
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> adapter1;
     DataStorage dataStorage = new DataStorage();
-    private ArrayList<String> items;
 
+    private ArrayList<ArrayList<String>> data;
+    private ArrayList<String> list11;
+    private ArrayList<String> list12;
+    private ArrayList<String> list21;
+    private ArrayList<String> list22;
+    private ArrayList<String> list31;
     public static SemesterFragment newInstanse(int position){
         SemesterFragment f = new SemesterFragment();
         Bundle b = new Bundle();
@@ -44,6 +49,13 @@ public class SemesterFragment extends android.support.v4.app.Fragment {
         super.onCreate(savedInstanceState);
         positions = getArguments().getInt(ARG_POSITION);
         arrayList = new ArrayList<String>();
+        list11 = new ArrayList<String>();
+        list12 = new ArrayList<String>();
+        list21 = new ArrayList<String>();
+        list22 = new ArrayList<String>();
+        list31 = new ArrayList<String>();
+        data = new ArrayList<ArrayList<String>>();
+
         arrayList.add(dataStorage.getInstance().getMainList().get(0));
         arrayList.add(dataStorage.getInstance().getMainList().get(1));
         arrayList.add(dataStorage.getInstance().getMainList().get(2));
@@ -54,6 +66,47 @@ public class SemesterFragment extends android.support.v4.app.Fragment {
         adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, arrayList);
 
 
+        list11.add(dataStorage.getInstance().getList11().get(0));
+        list11.add(dataStorage.getInstance().getList11().get(1));
+        list11.add(dataStorage.getInstance().getList11().get(2));
+        list11.add(dataStorage.getInstance().getList11().get(3));
+        list11.add(dataStorage.getInstance().getList11().get(4));
+        list11.add(dataStorage.getInstance().getList11().get(5));
+            list12.add(dataStorage.getInstance().getList12().get(0));
+        list12.add(dataStorage.getInstance().getList12().get(1));
+        list12.add(dataStorage.getInstance().getList12().get(2));
+        list12.add(dataStorage.getInstance().getList12().get(3));
+        list12.add(dataStorage.getInstance().getList12().get(4));
+        list12.add(dataStorage.getInstance().getList12().get(5));
+
+            list21.add(dataStorage.getInstance().getList21().get(0));
+        list21.add(dataStorage.getInstance().getList21().get(1));
+        list21.add(dataStorage.getInstance().getList21().get(2));
+        list21.add(dataStorage.getInstance().getList21().get(3));
+        list21.add(dataStorage.getInstance().getList21().get(4));
+        list21.add(dataStorage.getInstance().getList21().get(5));
+            list22.add(dataStorage.getInstance().getList22().get(0));
+        list22.add(dataStorage.getInstance().getList22().get(1));
+        list22.add(dataStorage.getInstance().getList22().get(2));
+        list22.add(dataStorage.getInstance().getList22().get(3));
+        list22.add(dataStorage.getInstance().getList22().get(4));
+        list22.add(dataStorage.getInstance().getList22().get(5));
+
+            list31.add(dataStorage.getInstance().getList31().get(0));
+        list31.add(dataStorage.getInstance().getList31().get(1));
+        list31.add(dataStorage.getInstance().getList31().get(2));
+        list31.add(dataStorage.getInstance().getList31().get(3));
+        list31.add(dataStorage.getInstance().getList31().get(4));
+        list31.add(dataStorage.getInstance().getList31().get(5));
+        list31.add(dataStorage.getInstance().getList31().get(6));
+
+        data.add(list11);
+        data.add(list12);
+        data.add(list21);
+        data.add(list22);
+        data.add(list31);
+
+//포지션 0~4까지에 따라서 1-1~3-1까지 넣으면됨
     }
 
     @Override
@@ -69,9 +122,28 @@ public class SemesterFragment extends android.support.v4.app.Fragment {
         final View rootView;
         rootView = inflater.inflate(R.layout.list, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.semesterList);
-        List1 list1 = new List1(getActivity(),items);
+        List1 list1 = new List1(getActivity(),arrayList);
+        switch (positions){
+            case 0:
+                adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data.get(0));
+                break;
+            case 1:
+                adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data.get(1));
+                break;
+            case 2:
+                adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data.get(2));
+                break;
+            case 3:
+                adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data.get(3));
+                break;
+            case 4:
+                adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data.get(4));
+                break;
+            default:
+                break;
+
+        }
         listView.setAdapter(adapter1);
-        TextView tv = (TextView) rootView.findViewById(R.id.textView5);
         return rootView;
 
 
@@ -99,9 +171,9 @@ public class SemesterFragment extends android.support.v4.app.Fragment {
             TextView manufac = (TextView) rowView.findViewById(R.id.manufac);
             TextView price = (TextView) rowView.findViewById(R.id.price);
             title.setTextSize(30);
-            title.setText("ㅗㅗ");
+            title.setText("ㅗㅗ"+position);
             manufac.setTextSize(10);
-            manufac.setText("ㅗㅗ");
+            manufac.setText("ㅗㅗ"+position);
 
 
             return rowView;

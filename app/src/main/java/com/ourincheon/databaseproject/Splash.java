@@ -57,6 +57,12 @@ public class Splash extends Activity {
             ArrayList<String> list = new ArrayList<String>();
             ArrayList<String> sem_name = new ArrayList<String>();
             ArrayList<Integer> grade = new ArrayList<Integer>();
+            ArrayList<String> list11 = new ArrayList<String>();
+            ArrayList<String> list12 = new ArrayList<String>();
+            ArrayList<String> list21 = new ArrayList<String>();
+            ArrayList<String> list22 = new ArrayList<String>();
+            ArrayList<String> list31 = new ArrayList<String>();
+
             Log.e("branch3", "branch3");
             try {
                 Log.e("subtest",DataStorage.getInstance().getstudent_code().get(identify));
@@ -92,6 +98,7 @@ public class Splash extends Activity {
                     }
                     i++;
                 }
+                /*5/5 + 6/6 + 7/7*/
                 if(grade.size() >0){
                     dataStorage.getInstance().setTotalGrade(grade);
                     Log.e("branch4", "잘 넣어졌다.");
@@ -100,8 +107,86 @@ public class Splash extends Activity {
                 for(int j = 0; j<grade.size(); j++){
                     temp=temp + dataStorage.getInstance().getTotalGrade().get(j);
                 }
+                Log.e("branch5", String.valueOf(temp));
                 temp = (temp/(grade.size()-5));
                 Log.e("branch5", String.valueOf(temp));
+                Log.e("branch5", String.valueOf(grade.size()));
+                reset = stmt.executeQuery("select * from NEW_semester where stu_code= '" + DataStorage.getInstance().getstudent_code().get(identify) +"' and sem_sem = '1-1'");
+                i = 0;
+                while(reset.next()){
+                    try {
+                        list11.add(i, reset.getString(5) + " " + reset.getString(3));
+                    }catch (NullPointerException e){
+                        Log.e("null", "null발생");
+                    }
+                    i++;
+                }
+                if(grade.size() >0){
+                    dataStorage.getInstance().setList11(list11);
+
+                    Log.e("branch6", dataStorage.getInstance().getList11().get(1));
+                    //dataStorage.getInstance().setTotalGrade(grade);
+                }
+                reset = stmt.executeQuery("select * from NEW_semester where stu_code= '" + DataStorage.getInstance().getstudent_code().get(identify) +"' and sem_sem = '1-2'");
+                i = 0;
+                while(reset.next()){
+                    try {
+                        list12.add(i, reset.getString(5)+ " " + reset.getString(3));
+                    }catch (NullPointerException e){
+                        Log.e("null", "null발생");
+                    }
+                    i++;
+                }
+                if(grade.size() >0){
+                    dataStorage.getInstance().setList12(list12);
+                    Log.e("branch7", "잘 넣어졌다.");
+                    //dataStorage.getInstance().setTotalGrade(grade);
+                }
+                reset = stmt.executeQuery("select * from NEW_semester where stu_code= '" + DataStorage.getInstance().getstudent_code().get(identify) +"' and sem_sem = '2-1'");
+                i = 0;
+                while(reset.next()){
+                    try {
+                        list21.add(i, reset.getString(5)+ " " + reset.getString(3));
+                    }catch (NullPointerException e){
+                        Log.e("null", "null발생");
+                    }
+                    i++;
+                }
+                if(grade.size() >0){
+                    dataStorage.getInstance().setList21(list21);
+                    Log.e("branch8", "잘 넣어졌다.");
+                    //dataStorage.getInstance().setTotalGrade(grade);
+                }
+                reset = stmt.executeQuery("select * from NEW_semester where stu_code= '" + DataStorage.getInstance().getstudent_code().get(identify) +"' and sem_sem = '2-2'");
+                i = 0;
+                while(reset.next()){
+                    try {
+                        list22.add(i, reset.getString(5)+ " " + reset.getString(3));
+                    }catch (NullPointerException e){
+                        Log.e("null", "null발생");
+                    }
+                    i++;
+                }
+                if(grade.size() >0){
+                    dataStorage.getInstance().setList22(list22);
+                    Log.e("branch9", "잘 넣어졌다.");
+                    //dataStorage.getInstance().setTotalGrade(grade);
+                }
+                reset = stmt.executeQuery("select * from NEW_semester where stu_code= '" + DataStorage.getInstance().getstudent_code().get(identify) +"' and sem_sem = '3-1'");
+                i = 0;
+                while(reset.next()){
+                    try {
+                        list31.add(i, reset.getString(5)+ " " + reset.getString(3));
+                    }catch (NullPointerException e){
+                        Log.e("null", "null발생");
+                    }
+                    i++;
+                }
+                if(grade.size() >0){
+                    dataStorage.getInstance().setList31(list31);
+                    Log.e("branch10", "잘 넣어졌다.");
+                    //dataStorage.getInstance().setTotalGrade(grade);
+                }
 
                 reset.close();
                 stmt.close();
