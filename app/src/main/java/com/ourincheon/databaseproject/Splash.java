@@ -30,7 +30,7 @@ public class Splash extends Activity {
         identify = intent.getIntExtra("identify",0);
         MssqlTask1 mssqlTask = new MssqlTask1();
         mssqlTask.execute();
-        Log.e("data111", dataStorage.getInstance().getstudent_code().get(1));
+        //Log.e("data111", dataStorage.getInstance().getstudent_code().get(1));
         //Log.e("identify", DataStorage.getInstance().getstudent_code().get(identify));
 
     }
