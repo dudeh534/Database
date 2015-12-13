@@ -38,7 +38,7 @@ public class SemesterFragment extends android.support.v4.app.Fragment {
     }
     //       Layout을 inflater을하여 View작업을 하는 곳.
 
-
+//asdfasdfasdf
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
