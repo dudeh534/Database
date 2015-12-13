@@ -69,14 +69,15 @@ public class MainActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                insert insert = new insert();
+                insert.execute();
                 for (int i = 0; i < 7; i++) {
                     if (name.getText().toString().equals(dataStorage.getInstance().getMainList().get(i))) {
                         name1 = name.getText().toString();
                         name2 = grade.getText().toString();
                         arrayList.set(i, dataStorage.getInstance().getMainList().get(i) + " (" + grade.getText().toString() + ")");
                         listView.setAdapter(adapter);
-                        insert insert = new insert();
-                        insert.execute();
+
                     }
                 }
             }
@@ -86,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Semester.class));
+            }
+        });
+        Button button4 = (Button)findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Test.class));
             }
         });
 

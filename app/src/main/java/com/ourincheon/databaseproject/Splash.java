@@ -187,6 +187,21 @@ public class Splash extends Activity {
                     Log.e("branch10", "잘 넣어졌다.");
                     //dataStorage.getInstance().setTotalGrade(grade);
                 }
+                reset = stmt.executeQuery("select * from sem_infor where 3-1'");
+                i = 0;
+                while(reset.next()){
+                    try {
+                        list31.add(i, reset.getString(5)+ " " + reset.getString(3));
+                    }catch (NullPointerException e){
+                        Log.e("null", "null발생");
+                    }
+                    i++;
+                }
+                if(grade.size() >0){
+                    dataStorage.getInstance().setList31(list31);
+                    Log.e("branch10", "잘 넣어졌다.");
+                    //dataStorage.getInstance().setTotalGrade(grade);
+                }
 
                 reset.close();
                 stmt.close();

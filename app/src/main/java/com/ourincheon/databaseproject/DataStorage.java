@@ -25,6 +25,7 @@ public class DataStorage {
     private ArrayList<String> List31 = new ArrayList<String>();
     private ArrayList<String> chgrade = new ArrayList<String>();
     private ArrayList<String> chgrade1 = new ArrayList<String>();
+    private ArrayList<String> TEST = new ArrayList<String>();
 
     public static DataStorage getM_instance(){
         return m_instance;
@@ -97,6 +98,13 @@ public class DataStorage {
     }
     public void setchgrade1(ArrayList<String> chgrade1){
         this.chgrade1 = chgrade1;
+    }
+
+    public ArrayList<String> getTEST(){
+        return TEST;
+    }
+    public void setTEST(ArrayList<String> TEST){
+        this.TEST = TEST;
     }
 
 

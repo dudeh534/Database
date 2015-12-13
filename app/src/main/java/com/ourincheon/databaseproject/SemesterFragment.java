@@ -55,7 +55,6 @@ public class SemesterFragment extends android.support.v4.app.Fragment {
         list22 = new ArrayList<String>();
         list31 = new ArrayList<String>();
         data = new ArrayList<ArrayList<String>>();
-
         arrayList.add(dataStorage.getInstance().getMainList().get(0));
         arrayList.add(dataStorage.getInstance().getMainList().get(1));
         arrayList.add(dataStorage.getInstance().getMainList().get(2));

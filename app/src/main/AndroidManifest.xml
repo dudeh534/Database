@@ -19,6 +19,8 @@
         <activity android:name=".Splash"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".Semester"/>
+        <activity android:name=".Test"
+            android:theme="@style/Base.Theme.AppCompat.Light.Dialog.FixedSize"/>
     </application>
 
 </manifest>
